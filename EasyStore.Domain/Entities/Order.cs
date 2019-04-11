@@ -9,5 +9,8 @@ namespace EasyStore.Domain.Entities
         public int CustomerId { get; set; }
         public Address BillingAddress { get; set; }
         public Address ShippingAddress { get; set; }
+
+
+        
     }
 }

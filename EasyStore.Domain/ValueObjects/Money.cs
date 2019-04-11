@@ -8,8 +8,11 @@ namespace EasyStore.Domain.ValueObjects
     {
         public decimal Value { get; private set; }
 
+        public Money(){ }
+
         public Money(decimal value)
         {
+            
             Value = value;
         }
 

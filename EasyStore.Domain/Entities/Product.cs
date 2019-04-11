@@ -1,5 +1,4 @@
-﻿using System;
-using EasyStore.Domain.ValueObjects;
+﻿using EasyStore.Domain.ValueObjects;
 
 namespace EasyStore.Domain.Entities
 {
