@@ -19,13 +19,15 @@ namespace EasyStore.Persistence.Infrastructure
             return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
         }
 
+        protected abstract TContext CreateNewInstance(DbContextOptions<TContext> options);
+
         private TContext Create(string basePath, string environmentName)
         {
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(basePath)
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.Local.json", optional: true)
+                .AddJsonFile($"appsettings.Development.json", optional: true)
                 .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
                 .AddEnvironmentVariables()
                 .Build();
@@ -46,7 +48,7 @@ namespace EasyStore.Persistence.Infrastructure
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
 
-            optionsBuilder.UseMySqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString);
 
             return CreateNewInstance(optionsBuilder.Options);
         }
