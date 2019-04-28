@@ -1,9 +1,10 @@
-﻿using EasyStore.Domain.Entities;
+﻿using EasyStore.Application.Interfaces;
+using EasyStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyStore.Persistence
 {
-    public class EasyStoreDbContext : DbContext
+    public class EasyStoreDbContext : DbContext, IEasyStoreDbContext
     {
         public EasyStoreDbContext(DbContextOptions<EasyStoreDbContext> options) : base(options)
         {

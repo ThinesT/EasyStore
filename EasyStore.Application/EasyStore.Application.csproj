@@ -7,4 +7,18 @@
   <ItemGroup>
     <ProjectReference Include="..\EasyStore.Domain\EasyStore.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="FluentValidation" Version="8.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Infrastructure\AutoMapper\" />
+    <Folder Include="Interfaces\Mapping\" />
+  </ItemGroup>
 </Project>
