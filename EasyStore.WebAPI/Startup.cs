@@ -59,6 +59,7 @@ namespace EasyStore.WebAPI
                 options.SuppressModelStateInvalidFilter = true;
             });
 
+            //Add Swagger
             services.AddSwaggerDocument(config =>
             {
                 config.PostProcess = document =>
@@ -80,6 +81,18 @@ namespace EasyStore.WebAPI
 
                 };
             });
+
+            services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+            });
+
+            services.AddVersionedApiExplorer(options =>
+            {
+                options.SubstituteApiVersionInUrl = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

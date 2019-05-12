@@ -11,7 +11,8 @@ namespace EasyStore.WebAPI.Controllers
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/[Controller]")]
+    [Route("api/v{version:apiVersion}/[Controller]")]
+    [ApiVersion("1.0")]
     public class ProductsController : BaseController
     {
         public async Task<ActionResult<ProductListViewModel>> GetAllProducts()
