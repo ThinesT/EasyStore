@@ -49,10 +49,37 @@ namespace EasyStore.WebAPI
 
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-                    //.AddFluentValidation(fv =>
-                    //{
-                        //fv.RegisterValidatorsFromAssemblyContaining<>();
-                    //});
+            //.AddFluentValidation(fv =>
+            //{
+            //fv.RegisterValidatorsFromAssemblyContaining<>();
+            //});
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1.0";
+                    document.Info.Title = "EasyStore API";
+                    document.Info.Description = "A Simple E-Commerce Store API";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.SwaggerContact
+                    {
+                        Name = "Easy Store",
+                        Email = string.Empty,
+                    };
+                    document.Info.License = new NSwag.SwaggerLicense
+                    {
+                        Name = "Licence to WebOnMaster",
+                        Url = "http://webonmaster.com"
+                    };
+
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +89,8 @@ namespace EasyStore.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUi3();
             app.UseMvc();
         }
     }

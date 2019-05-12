@@ -6,7 +6,6 @@ namespace EasyStore.Application.Products.Queries
 {
     public class ProductLookupModel : ICustomMapping
     {
-        public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
@@ -15,7 +14,7 @@ namespace EasyStore.Application.Products.Queries
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<Product, ProductLookupModel>()
-                .ForMember(pDTO => pDTO.Id, opt => opt.MapFrom(p => p.ProductId))
+                .ForMember(pDTO => pDTO.ProductId, opt => opt.MapFrom(p => p.ProductId))
                 .ForMember(pDTO => pDTO.Price, opt => opt.MapFrom(p => p.Price.Value))
                 .ForMember(pDTO => pDTO.ProductDescription, opt => opt.MapFrom(p => p.ProductDescription))
                 .ForMember(pDTO => pDTO.ProductName, opt => opt.MapFrom(p => p.ProductName));
