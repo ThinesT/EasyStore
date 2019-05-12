@@ -20,5 +20,9 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Infrastructure\AutoMapper\" />
     <Folder Include="Interfaces\Mapping\" />
+    <Folder Include="Products\" />
+    <Folder Include="Products\Commands\" />
+    <Folder Include="Products\Queries\" />
+    <Folder Include="Products\Models\" />
   </ItemGroup>
 </Project>

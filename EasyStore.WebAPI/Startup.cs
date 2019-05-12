@@ -3,6 +3,8 @@ using AutoMapper;
 using EasyStore.Application.Infrastructure;
 using EasyStore.Application.Infrastructure.AutoMapper;
 using EasyStore.Application.Interfaces;
+using EasyStore.Application.Products.Queries;
+using EasyStore.Infrastructure.Logging;
 using EasyStore.Persistence;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -30,9 +32,14 @@ namespace EasyStore.WebAPI
             //Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
+            // Add Framework Services
+            services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+
+
             //Add MediatR
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddMediatR(typeof(GetProductsListQueryHandler).GetTypeInfo().Assembly);
 
             //Add DbContext
             services.AddDbContext<IEasyStoreDbContext, EasyStoreDbContext>(options =>
