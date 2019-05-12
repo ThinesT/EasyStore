@@ -13,15 +13,18 @@ namespace EasyStore.Application.Products.Queries
     {
         private readonly IEasyStoreDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IAppLogger<GetProductsListQueryHandler> _logger;
 
-        public GetProductsListQueryHandler(IEasyStoreDbContext context, IMapper mapper)
+        public GetProductsListQueryHandler(IEasyStoreDbContext context, IMapper mapper, IAppLogger<GetProductsListQueryHandler> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ProductListViewModel> Handle(GetProductsListQuery request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Getting products list from database, Products:{request}", request);
             var products = await _context.Products.ProjectTo<ProductLookupModel>(_mapper.ConfigurationProvider).ToListAsync();
 
             return new ProductListViewModel

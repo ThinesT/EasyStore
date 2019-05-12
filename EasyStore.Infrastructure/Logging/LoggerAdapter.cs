@@ -15,12 +15,12 @@ namespace EasyStore.Infrastructure.Logging
 
         public void LogErro(string message, params object[] args)
         {
-            _logger.LogInformation(message, args);
+            _logger.LogError(message, args);
         }
 
         public void LogInformation(string message, params object[] args)
         {
-            _logger.LogError(message, args);
+            _logger.LogInformation(message, args);
         }
 
         public void LogWarning(string message, params object[] args)

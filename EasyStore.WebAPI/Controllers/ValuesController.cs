@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyStore.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
+    [Route("api/v{version:apiVersion}/[Controller]")]
+    [ApiVersion("1.0")]
     public class ValuesController : ControllerBase
     {
         // GET api/values
