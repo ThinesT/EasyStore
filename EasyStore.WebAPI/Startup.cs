@@ -6,7 +6,6 @@ using EasyStore.Application.Interfaces;
 using EasyStore.Application.Products.Queries;
 using EasyStore.Infrastructure.Logging;
 using EasyStore.Persistence;
-using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +13,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
+using EasyStore.Application.Products.Commands.CreateProduct;
+using EasyStore.Infrastructure.Notification;
+using EasyStore.WebAPI.Filters;
 
 namespace EasyStore.WebAPI
 {
@@ -34,6 +37,7 @@ namespace EasyStore.WebAPI
 
             // Add Framework Services
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            services.AddTransient<INotificationService, NotificationService>();
 
 
             //Add MediatR
@@ -47,12 +51,13 @@ namespace EasyStore.WebAPI
 
 
 
-            services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //.AddFluentValidation(fv =>
-            //{
-            //fv.RegisterValidatorsFromAssemblyContaining<>();
-            //});
+            services.AddMvc(options => {
+                options.Filters.Add(typeof(CustomExceptionFilterAttribute));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+              .AddFluentValidation(fv =>
+                 {
+                     fv.RegisterValidatorsFromAssemblyContaining<CreateProductCommandValidator>();
+                 });
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -75,7 +80,7 @@ namespace EasyStore.WebAPI
                     };
                     document.Info.License = new NSwag.SwaggerLicense
                     {
-                        Name = "Licence to WebOnMaster",
+                        Name = "Licence to Thines T",
                         Url = "http://webonmaster.com"
                     };
 
