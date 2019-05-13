@@ -28,5 +28,6 @@
     <Folder Include="Notifications\Models\" />
     <Folder Include="Products\Commands\CreateProduct\" />
     <Folder Include="Products\Queries\GetProductsList\" />
+    <Folder Include="Products\Queries\GetProduct\" />
   </ItemGroup>
 </Project>
