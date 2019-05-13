@@ -2,7 +2,7 @@
 using EasyStore.Application.Interfaces.Mapping;
 using EasyStore.Domain.Entities;
 
-namespace EasyStore.Application.Products.Queries
+namespace EasyStore.Application.Products.Queries.GetProductsList
 {
     public class ProductLookupModel : ICustomMapping
     {

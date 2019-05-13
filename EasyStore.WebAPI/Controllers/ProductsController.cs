@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyStore.Application.Products.Commands.CreateProduct;
-using EasyStore.Application.Products.Queries;
+using EasyStore.Application.Products.Queries.GetProductsList;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EasyStore.Application.Products.Queries
+namespace EasyStore.Application.Products.Queries.GetProductsList
 {
     public class ProductListViewModel
     {

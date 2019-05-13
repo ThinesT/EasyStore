@@ -17,6 +17,7 @@ using FluentValidation.AspNetCore;
 using EasyStore.Application.Products.Commands.CreateProduct;
 using EasyStore.Infrastructure.Notification;
 using EasyStore.WebAPI.Filters;
+using EasyStore.Application.Products.Queries.GetProductsList;
 
 namespace EasyStore.WebAPI
 {

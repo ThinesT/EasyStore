@@ -7,7 +7,7 @@ using EasyStore.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace EasyStore.Application.Products.Queries
+namespace EasyStore.Application.Products.Queries.GetProductsList
 {
     public class GetProductsListQueryHandler : IRequestHandler<GetProductsListQuery, ProductListViewModel>
     {
