@@ -18,6 +18,7 @@ using EasyStore.Application.Products.Commands.CreateProduct;
 using EasyStore.Infrastructure.Notification;
 using EasyStore.WebAPI.Filters;
 using EasyStore.Application.Products.Queries.GetProductsList;
+using ElmahCore.Mvc;
 
 namespace EasyStore.WebAPI
 {
@@ -50,7 +51,8 @@ namespace EasyStore.WebAPI
             services.AddDbContext<IEasyStoreDbContext, EasyStoreDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("EasyStoreDb")));
 
-
+            //Add Logging UI Service - ElmahCore
+            services.AddElmah();
 
             services.AddMvc(options => {
                 options.Filters.Add(typeof(CustomExceptionFilterAttribute));
@@ -110,6 +112,7 @@ namespace EasyStore.WebAPI
             }
             app.UseSwagger();
             app.UseSwaggerUi3();
+            app.UseElmah();
             app.UseMvc();
         }
     }

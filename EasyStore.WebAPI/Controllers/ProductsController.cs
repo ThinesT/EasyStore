@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyStore.Application.Products.Commands.CreateProduct;
+using EasyStore.Application.Products.Commands.UpdateProduct;
 using EasyStore.Application.Products.Queries.GetProduct;
 using EasyStore.Application.Products.Queries.GetProductsList;
 using Microsoft.AspNetCore.Http;
@@ -47,6 +48,16 @@ namespace EasyStore.WebAPI.Controllers
             var product = await Mediator.Send(new GetProductQuery { Id = id });
 
             return Ok(new { data = product });
+        }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateProduct([FromBody]UpdateProductCommand command)
+        {
+            await Mediator.Send(command);
+
+            return NoContent();
         }
     }
 }

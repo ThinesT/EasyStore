@@ -15,11 +15,12 @@ namespace EasyStore.Domain.ValueObjects
 
         private Address() { }
 
-        public Address(string address_1, string address_2, string city, string country, string zipCode)
+        public Address(string address_1, string address_2, string city, string email, string country, string zipCode)
         {
             Address_1 = address_1;
             Address_2 = address_2;
             City = city;
+            EmailAddress = new Email(email);
             Country = country;
             ZipCode = zipCode;
 
@@ -30,6 +31,7 @@ namespace EasyStore.Domain.ValueObjects
             yield return Address_1;
             yield return Address_2;
             yield return City;
+            yield return EmailAddress;
             yield return Country;
             yield return ZipCode;
         }

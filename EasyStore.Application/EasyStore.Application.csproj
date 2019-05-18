@@ -29,5 +29,10 @@
     <Folder Include="Products\Commands\CreateProduct\" />
     <Folder Include="Products\Queries\GetProductsList\" />
     <Folder Include="Products\Queries\GetProduct\" />
+    <Folder Include="Customers\" />
+    <Folder Include="Customers\Commands\" />
+    <Folder Include="Customers\Queries\" />
+    <Folder Include="Customers\Commands\CreateCustomer\" />
+    <Folder Include="Products\Commands\UpdateProduct\" />
   </ItemGroup>
 </Project>
