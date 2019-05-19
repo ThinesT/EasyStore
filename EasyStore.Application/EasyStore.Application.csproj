@@ -23,7 +23,6 @@
     <Folder Include="Products\" />
     <Folder Include="Products\Commands\" />
     <Folder Include="Products\Queries\" />
-    <Folder Include="Products\Models\" />
     <Folder Include="Notifications\" />
     <Folder Include="Notifications\Models\" />
     <Folder Include="Products\Commands\CreateProduct\" />
