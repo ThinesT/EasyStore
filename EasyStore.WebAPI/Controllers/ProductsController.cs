@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyStore.Application.Products.Commands.CreateProduct;
+using EasyStore.Application.Products.Commands.DeleteProduct;
 using EasyStore.Application.Products.Commands.UpdateProduct;
 using EasyStore.Application.Products.Queries.GetProduct;
 using EasyStore.Application.Products.Queries.GetProductsList;
@@ -56,6 +57,17 @@ namespace EasyStore.WebAPI.Controllers
         public async Task<IActionResult> UpdateProduct([FromBody]UpdateProductCommand command)
         {
             await Mediator.Send(command);
+
+            return NoContent();
+        }
+
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await Mediator.Send(new DeleteProductCommand { Id = id });
 
             return NoContent();
         }

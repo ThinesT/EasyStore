@@ -13,7 +13,7 @@ namespace EasyStore.Infrastructure.Logging
             _logger = loggerFactory.CreateLogger<T>();
         }
 
-        public void LogErro(string message, params object[] args)
+        public void LogError(string message, params object[] args)
         {
             _logger.LogError(message, args);
         }
